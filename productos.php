@@ -57,6 +57,22 @@
         }else if(empty($existencia)){
             echo 'El campo eixtencia no debe estar vacio <br>';
         }else{
+            $sql = "INSERT  INTO productos(nombre, descripcion, precio, existencia, 
+            departamento)VALUES(:nombre, :descripcion, :precio,:existencia, :departamento)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':descripcion', $descripcion);
+            $stmt->bindParam(':precio', $precio);
+            $stmt->bindParam(':existencia', $existencia);
+            $stmt->bindParam(':departamento', $dep);
+            if($stmt->execute()){
+                echo "Registro guardado con exito";
+            }else{
+                echo"Error En la linea de sql";
+            }
+                
+            
+            /*
             $insertarDatos = "INSERT INTO productos VALUES('$nombre',
             '$precio',
             '$descripcion',
@@ -69,7 +85,7 @@
             }
             else{
                 echo "Registro guardado con exito";
-            }
+            }*/
         }
         
       
