@@ -49,39 +49,53 @@
         $correo=$_POST["correo"];
         $puesto=$_POST["puesto"];
 
-        if(empty($rfc)){
-            echo 'El campo rfc no debe estar vacio <br>';
-        }else if(empty($nombre)){
-            echo 'El campo nombre no debe estar vacio <br>';
-        }else if(empty($apellido)){
-            echo 'El campo apellido no debe estar vacio <br>';
-        }else if(empty($correo)){
+        if(empty($correo)){
             echo 'El campo correo no debe estar vacio <br>';
-        }else if(empty($direccion)){
-            echo 'El campo domicilio no debe estar vacio <br>';
-        }else if(strlen($telefono) != 10){
-            echo 'El campo telefono debe ser de 10 digitos <br>';
-        }else if(empty($puesto)){
-            echo 'El campo sexo no debe estar vacio <br>';
         }else{
-            $insertarEmpleado = "INSERT INTO empleados VALUES('$rfc',
-            '$nombre',
-            '$apellido',
-            '$telefono',
-            '$direccion',
-            '$correo',
-            '$puesto')";
+            $dom = strchr($correo, '@');        
+            if((strcmp($dom, "@gmail.com") == 0) || (strcmp($dom, "@hotmail.com") == 0) || (strcmp($dom, "@yahoo.com") ==0)){            
 
-            $ejecutarInsertar = mysqli_query($enlace, $insertarEmpleado);
-            if(!$ejecutarInsertar){
-                echo"Error En la linea de sql";
+                if(empty($rfc)){
+                    echo 'El campo rfc no debe estar vacio <br>';
+                }else if(empty($nombre)){
+                    echo 'El campo nombre no debe estar vacio <br>';
+                }else if(empty($apellido)){
+                    echo 'El campo apellido no debe estar vacio <br>';
+                }else if(empty($correo)){
+                    echo 'El campo correo no debe estar vacio <br>';
+                }else if(empty($direccion)){
+                    echo 'El campo domicilio no debe estar vacio <br>';
+                }else if(strlen($telefono) != 10){
+                    echo 'El campo telefono debe ser de 10 digitos <br>';
+                }else if(empty($puesto)){
+                    echo 'El campo sexo no debe estar vacio <br>';
+                }else{
+                    $insertarEmpleado = "INSERT INTO empleados VALUES('$rfc',
+                    '$nombre',
+                    '$apellido',
+                    '$telefono',
+                    '$direccion',
+                    '$correo',
+                    '$puesto')";
+        
+                    $ejecutarInsertar = mysqli_query($enlace, $insertarEmpleado);
+                    if(!$ejecutarInsertar){
+                        echo"Error En la linea de sql";
+                    }
+                    else{
+                        echo "Registro guardado con exito";
+                    }
+                }
+        
+        
+
+            }else{
+                echo 'Servicio de correo invalido';
             }
-            else{
-                echo "Registro guardado con exito";
-            }
+
         }
 
-
+      
         
     }
 ?>
