@@ -113,9 +113,9 @@ function imprimirProd($stmt){
                 echo '<th>Existencia</th>';            
                 echo '<th>Departamento</th>';
             echo '</tr>';                            
-                echo '<td>'.$row['rfc'].'</td>';
+                echo '<td>'.$row['id_producto'].'</td>';
                 echo '<td>'.$row['nombre'].'</td>';
-                echo '<td>'.$row['descipcion'].'</td>';
+                echo '<td>'.$row['descripcion'].'</td>';
                 echo '<td>'.$row['precio'].'</td>';                            
                 echo '<td>'.$row['existencia'].'</td>';
                 echo '<td>'.$row['departamento'].'</td>';                                       
