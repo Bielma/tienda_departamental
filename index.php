@@ -56,12 +56,8 @@
         if(empty($correo)){
             echo 'El campo correo no debe estar vacio <br>';
         }else{
-            $dom = strchr($correo, '@');
-            echo 'Dom: '.$dom.'<br>';
-
-            if (!strcmp($dom , '@gmail.com')){
-                echo 'Servicio de correo invalido';
-            }else{
+            $dom = strchr($correo, '@');        
+            if((strcmp($dom, "@gmail.com") == 0) || (strcmp($dom, "@hotmail.com") == 0) || (strcmp($dom, "@yahoo.com") ==0)){            
                 if(empty($rfc)){
                     echo 'El campo rfc no debe estar vacio <br>';
                 }else if(empty($nombre)){
@@ -89,7 +85,9 @@
                         echo "Registro guardado con exito";
                     }
                 }
-        
+
+            }else{
+                echo 'Servicio de correo invalido';
             }
             
         }
