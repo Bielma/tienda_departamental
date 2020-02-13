@@ -61,8 +61,6 @@
                     echo 'El campo nombre no debe estar vacio <br>';
                 }else if(empty($apellido)){
                     echo 'El campo apellido no debe estar vacio <br>';
-                }else if(empty($correo)){
-                    echo 'El campo correo no debe estar vacio <br>';
                 }else if(empty($direccion)){
                     echo 'El campo domicilio no debe estar vacio <br>';
                 }else if(strlen($telefono) != 10){

@@ -41,31 +41,41 @@
         $correo=$_POST["correo"];
         
 
-        if(empty($nombre)){
-            echo 'El campo nombre no debe estar vacio <br>';
-        }else if(empty($domicilio)){
-            echo 'El campo domicilio no debe estar vacio <br>';
-        }else if(strlen($telefono) != 10){
-            echo 'El campo telefono debe ser de 10 digitos <br>';
-        }else if(empty($rfc_prov)){
-            echo 'El campo rfc no debe estar vacio <br>';
-        }else if(empty($correo)){
+        if(empty($correo)){
             echo 'El campo correo no debe estar vacio <br>';
         }else{
+            $dom = strchr($correo, '@');        
+            if((strcmp($dom, "@gmail.com") == 0) || (strcmp($dom, "@hotmail.com") == 0) || (strcmp($dom, "@yahoo.com") ==0)){            
 
-            $insertarDatos = "INSERT INTO proveedores VALUES('$rfc_prov',
-            '$nombre', 
-            '$telefono', 
-            '$correo',      
-            '$domicilio')";
-            $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
-            if(!$ejecutarInsertar){
-                echo"Error En la linea de sql";
-            }
-            else{
-                echo "Registro guardado con exito";
+                if(empty($nombre)){
+                    echo 'El campo nombre no debe estar vacio <br>';
+                }else if(empty($domicilio)){
+                    echo 'El campo domicilio no debe estar vacio <br>';
+                }else if(strlen($telefono) != 10){
+                    echo 'El campo telefono debe ser de 10 digitos <br>';
+                }else if(empty($rfc_prov)){
+                    echo 'El campo rfc no debe estar vacio <br>';
+                }else{
+        
+                    $insertarDatos = "INSERT INTO proveedores VALUES('$rfc_prov',
+                    '$nombre', 
+                    '$telefono', 
+                    '$correo',      
+                    '$domicilio')";
+                    $ejecutarInsertar = mysqli_query($enlace, $insertarDatos);
+                    if(!$ejecutarInsertar){
+                        echo"Error En la linea de sql";
+                    }
+                    else{
+                        echo "Registro guardado con exito";
+                    }
+                }
+
+            }else{
+                echo 'Servicio de correo invalido';
             }
         }
+       
 
         
     }
