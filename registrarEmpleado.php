@@ -83,10 +83,7 @@
                     else{
                         echo "Registro guardado con exito";
                     }
-                }
-        
-        
-
+                }            
             }else{
                 echo 'Servicio de correo invalido';
             }
