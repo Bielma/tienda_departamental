@@ -3,35 +3,38 @@
     $rfc = '';
     $stmt = null;
     
-    if(isset($_POST['cliente'])){  
+    if(isset($_POST['empleado'])){  
         $rfc =$_POST['rfc'];     
-        $stmt = $conn->prepare('select * from datos where rfc LIKE :rfc');           
+        $stmt = $conn->prepare('select * from empleados where rfc LIKE :rfc');           
         $stmt -> execute(array('rfc'=> '%'.$rfc.'%'));                     
         
     }else{
-        $stmt = $conn->prepare('select * from datos');    
+        $stmt = $conn->prepare('select * from empleados');    
         $stmt -> execute(array());        
     }
     
     
-    function imprimirClientes($stmt){
+    function imprimirEmpleados($stmt){
         if($stmt!=null){
             while($row = $stmt->fetch()){
                 echo '<table class= "table table-striped table-bordered"';
                 echo '<tr>';
                     echo '<th>RFC</th>';
                     echo '<th>Nombre</th>';
-                    echo '<th>Correo</th>';
-                    echo '<th>Sexo</th>';
+                    echo '<th>Apellido</th>';    
+                    echo '<th>Correo</th>';            
                     echo '<th>Telefono</th>';
-                    echo '<th>Dirección</th>';                
+                    echo '<th>Dirección</th>';            
+                    echo '<th>Puesto</th>';
                 echo '</tr>';                            
                     echo '<td>'.$row['rfc'].'</td>';
                     echo '<td>'.$row['nombre'].'</td>';
-                    echo '<td>'.$row['correo'].'</td>';
-                    echo '<td>'.$row['sexo'].'</td>';
-                    echo '<td>'.$row['domicilio'].'</td>';
+                    echo '<td>'.$row['apellido'].'</td>';
+                    echo '<td>'.$row['correo'].'</td>';                            
                     echo '<td>'.$row['telefono'].'</td>';
+                    echo '<td>'.$row['direccion'].'</td>';           
+                    echo '<td>'.$row['puesto'].'</td>';
+                    
                 echo '</tr>';
                 echo '</table>';     
             }
@@ -40,6 +43,7 @@
             echo 'No hay registros de clientes';
         }
     }
+    
 ?>
 
 <!DOCTYPE html>
@@ -67,10 +71,10 @@
                             <a href = "mostrar_clientes.php">Clientes</a>
                         </li>
                         <li>
-                            <a href = "empleados.php">Empleados</a>
+                            <a href = "index.html">Empleados</a>
                         </li>
                         <li>
-                            <a href = "productos.php">Productos</a>
+                            <a href = "index.html">Productos</a>
                         </li>
                     </ul>
                 </nav>
@@ -79,11 +83,11 @@
         </header>
     <div class = "center">
                 <section id = "content">
-                    <h2>Todos los Clientes</h2>
+                    <h2>Todos los Empleados</h2>
                     <!--Listado-->
-                    <article class = "clientes-lsit">
+                    <article class = "clientes-list">
                         <?php                                  
-                            imprimirClientes($stmt);                             
+                            imprimirEmpleados($stmt);                             
                         ?>
                     </article>
 
@@ -91,14 +95,14 @@
                 <aside id = "sidebar">
                     <div id = "nav-panel" class = "sidebar-item">
                         <h3> Opciones</h3>
-                        <a href="registrar_clientes.php" class = "btn btn-succes">Registrar cliente</a>        
+                        <a href="registrarEmpleado.php" class = "btn btn-succes">Registrar Empleado</a>        
                     </div>
                     <div id = "search" class = "sidebar-item">
                         <h3>Buscador </h3>
-                        <p>Busca un cliente</p>
-                        <form action = "mostrar_clientes.php" method = "POST">
+                        <p>Busca un empleado</p>
+                        <form action = "empleados.php" method = "POST">
                             <input type = "text" name ="rfc"/>
-                            <input type = "submit" name ="cliente" value = "Buscar" class= "btn"/>
+                            <input type = "submit" name ="empleado" value = "Buscar" class= "btn"/>
                         </form>                
                     </div>
                 </aside>

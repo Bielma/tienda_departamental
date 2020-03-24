@@ -26,10 +26,10 @@
                             <a href = "mostrar_clientes.php">Clientes</a>
                         </li>
                         <li>
-                            <a href = "index.html">Empleados</a>
+                            <a href = "empleados.php">Empleados</a>
                         </li>
                         <li>
-                            <a href = "index.html">Productos</a>
+                            <a href = "proveedores.php">Productos</a>
                         </li>
                     </ul>
                 </nav>

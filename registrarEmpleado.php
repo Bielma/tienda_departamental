@@ -24,8 +24,8 @@
                 </div>
                 <input type="submit" class="btn" name="registrarse" value="Registrar">
             </form>
-            <form  class = "form2" id= "form2" name = "form2"  method = "POST" action = "consultar.php">
-                <input type="submit" class="btnConsultar" name="consultarEmpleados" value="Ver Empleados">
+            <form  class = "form2" id= "form2" name = "form2"  method = "POST" action = "empleados.php">
+                <input type="submit" class="btnConsultar" name="consultarEmpleados" value="Volver a Empleados">
             </form>
 
 
