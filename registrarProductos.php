@@ -23,8 +23,8 @@
                 <div>  <a>* Campos obligatorios</a>  </div>
                 <input type="submit" class="btn" name="registrarse" value="Registrar">
             </form>
-            <form  class = "form2" id= "form2" name = "form2"  method = "POST" action = "consultar.php">
-                <input type="submit" class="btnConsultar" name="consultarProductos" value="Ver Productos">
+            <form  class = "form2" id= "form2" name = "form2"  method = "POST" action = "productos.php">
+                <input type="submit" class="btnConsultar" name="consultarProductos" value="Volver a Productos">
             </form>
 
         </div>

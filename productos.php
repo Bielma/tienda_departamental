@@ -1,48 +1,45 @@
 <?php
     require 'database.php';
-    $rfc = '';
+    $id = '';
     $stmt = null;
     
-    if(isset($_POST['empleado'])){  
+    if(isset($_POST['poducto'])){  
         $rfc =$_POST['rfc'];     
-        $stmt = $conn->prepare('select * from empleados where rfc LIKE :rfc');           
-        $stmt -> execute(array('rfc'=> '%'.$rfc.'%'));                     
+        $stmt = $conn->prepare('select * from productos where id_producto LIKE :id');           
+        $stmt -> execute(array('id'=> '%'.$id.'%'));                     
         
     }else{
-        $stmt = $conn->prepare('select * from empleados');    
+        $stmt = $conn->prepare('select * from productos');    
         $stmt -> execute(array());        
     }
     
-    
-    function imprimirEmpleados($stmt){
+    function imprimirProd($stmt){
         if($stmt!=null){
             while($row = $stmt->fetch()){
                 echo '<table class= "table table-striped table-bordered"';
                 echo '<tr>';
-                    echo '<th>RFC</th>';
-                    echo '<th>Nombre</th>';
-                    echo '<th>Apellido</th>';    
-                    echo '<th>Correo</th>';            
-                    echo '<th>Telefono</th>';
-                    echo '<th>Dirección</th>';            
-                    echo '<th>Puesto</th>';
+                    echo '<th>ID</th>';
+                    echo '<th>Nombre</th>';            
+                    echo '<th>Descipción</th>';            
+                    echo '<th>Precio</th>';
+                    echo '<th>Existencia</th>';            
+                    echo '<th>Departamento</th>';
                 echo '</tr>';                            
-                    echo '<td>'.$row['rfc'].'</td>';
+                    echo '<td>'.$row['id_producto'].'</td>';
                     echo '<td>'.$row['nombre'].'</td>';
-                    echo '<td>'.$row['apellido'].'</td>';
-                    echo '<td>'.$row['correo'].'</td>';                            
-                    echo '<td>'.$row['telefono'].'</td>';
-                    echo '<td>'.$row['direccion'].'</td>';           
-                    echo '<td>'.$row['puesto'].'</td>';
-                    
+                    echo '<td>'.$row['descripcion'].'</td>';
+                    echo '<td>'.$row['precio'].'</td>';                            
+                    echo '<td>'.$row['existencia'].'</td>';
+                    echo '<td>'.$row['departamento'].'</td>';                                       
                 echo '</tr>';
                 echo '</table>';     
             }
             
         }else{
-            echo 'No hay registros de clientes';
+            echo 'No hay registros de productos';
         }
     }
+    
     
 ?>
 
@@ -83,11 +80,11 @@
         </header>
     <div class = "center">
                 <section id = "content">
-                    <h2>Todos los Empleados</h2>
+                    <h2>Todos los Productos</h2>
                     <!--Listado-->
                     <article class = "clientes-list">
                         <?php                                  
-                            imprimirEmpleados($stmt);                             
+                            imprimirProd($stmt);                             
                         ?>
                     </article>
 
@@ -95,14 +92,14 @@
                 <aside id = "sidebar">
                     <div id = "nav-panel" class = "sidebar-item">
                         <h3> Opciones</h3>
-                        <a href="registrarEmpleado.php" class = "btn btn-succes">Registrar Empleado</a>        
+                        <a href="registrarProductos.php" class = "btn btn-succes">Registrar Producto</a>        
                     </div>
                     <div id = "search" class = "sidebar-item">
                         <h3>Buscador </h3>
-                        <p>Busca un empleado</p>
-                        <form action = "empleados.php" method = "POST">
-                            <input type = "text" name ="rfc"/>
-                            <input type = "submit" name ="empleado" value = "Buscar" class= "btn"/>
+                        <p>Busca un producto</p>
+                        <form action = "productos.php" method = "POST">
+                            <input type = "text" name ="id"/>
+                            <input type = "submit" name ="producto" value = "Buscar" class= "btn"/>
                         </form>                
                     </div>
                 </aside>

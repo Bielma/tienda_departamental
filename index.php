@@ -29,7 +29,7 @@
                             <a href = "empleados.php">Empleados</a>
                         </li>
                         <li>
-                            <a href = "proveedores.php">Productos</a>
+                            <a href = "productos.php">Productos</a>
                         </li>
                     </ul>
                 </nav>
@@ -40,7 +40,7 @@
             <footer id = "footer">
                 <div class= "center">
                 <p>
-                    &copy; Proyecto, Seminario de Ingeniería de Software.
+                    &copy; Proyecto, Seminario de Ingeniería de Software, 20A.
                 </p>
                 </div>
             </footer>
