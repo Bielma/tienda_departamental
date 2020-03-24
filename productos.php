@@ -3,16 +3,17 @@
     $id = '';
     $stmt = null;
     
-    if(isset($_POST['poducto'])){  
-        $rfc =$_POST['rfc'];     
+    if(isset($_POST['producto'])){  
+        $id =$_POST['id_producto'];     
         $stmt = $conn->prepare('select * from productos where id_producto LIKE :id');           
-        $stmt -> execute(array('id'=> '%'.$id.'%'));                     
+        $stmt -> execute(array('id'=> '%'.$id.'%'));         
+      
         
     }else{
         $stmt = $conn->prepare('select * from productos');    
         $stmt -> execute(array());        
     }
-    
+
     function imprimirProd($stmt){
         if($stmt!=null){
             while($row = $stmt->fetch()){
@@ -98,7 +99,7 @@
                         <h3>Buscador </h3>
                         <p>Busca un producto</p>
                         <form action = "productos.php" method = "POST">
-                            <input type = "text" name ="id"/>
+                            <input type = "text" name ="id_producto"/>
                             <input type = "submit" name ="producto" value = "Buscar" class= "btn"/>
                         </form>                
                     </div>

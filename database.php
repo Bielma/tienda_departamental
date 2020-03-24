@@ -1,8 +1,8 @@
 <?php
     $servidor="localhost";
-    $usuario="root";
-    $clave="";
-    $baseDeDatos="sem_isw";
+    $usuario="id13029487_admin";
+    $clave="bluehole";
+    $baseDeDatos="id13029487_tienda";
 
     $dsn_Options = [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION];
 
